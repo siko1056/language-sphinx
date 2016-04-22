@@ -1,12 +1,11 @@
 {
   "name": "language-sphinx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sphinx Language Support",
   "repository": "https://github.com/siko1056/language-sphinx",
   "license": "GPLv3",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
