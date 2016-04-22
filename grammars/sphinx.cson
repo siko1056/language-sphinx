@@ -29,7 +29,19 @@
         'include': '#raw-blocks'
       }
       {
-        'include': '#emphasis'
+        'begin': '(?<=\\s)\\*\\*(?!\\s)'
+        'end': '(?<!\\s)\\*\\*(?=\\s)'
+        'name': 'markup.bold.sphinx'
+      }
+      {
+        'begin': '(?<=\\s)\\*(?!\\s)'
+        'end': '(?<!\\s)\\*(?=\\s)'
+        'name': 'markup.italic.sphinx'
+      }
+      {
+        'begin': '(?<=\\s)``(?!\\s)'
+        'end': '(?<!\\s)``(?=\\s)'
+        'name': 'markup.raw.sphinx'
       }
       {
         'include': '#link-def'
@@ -38,18 +50,8 @@
         'captures':
           '1':
             'name': 'punctuation.definition.substitution.sphinx'
-        'comment': 'substitution'
         'match': '(?<!\\\\)(\\|)[^|]+(?<!\\\\)(\\|_{0,2})'
         'name': 'markup.underline.substitution.sphinx'
-      }
-      {
-        'begin': '``'
-        'captures':
-          '0':
-            'name': 'punctuation.definition.raw.sphinx'
-        'comment': 'inline literal'
-        'end': '``((?=[^`\\w\\d])|$)'
-        'name': 'markup.raw.sphinx'
       }
       {
         'captures':
@@ -75,23 +77,11 @@
         'include': '#link-reference'
       }
       {
-        'begin': '(:)([-A-z0-9_.]*)(:)(`)'
-        'beginCaptures':
-          '1':
-            'name': 'punctuation.definition.intepreted.sphinx'
-          '2':
-            'name': 'entity.name.role.sphinx'
-          '3':
-            'name': 'punctuation.definition.intepreted.sphinx'
-          '4':
-            'name': 'punctuation.definition.intepreted.sphinx'
-        'comment': 'intepreted text - multiline with role'
-        'contentName': 'string.other.interpreted.sphinx'
-        'end': '(`)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.definition.intepreted.sphinx'
-        'name': 'markup.other.command.sphinx'
+        'comment', 'Inline markup'
+        'begin': ':[-A-z0-9_.]*:`'
+        'end': '`'
+        'contentName': 'string.sphinx'
+        'name': 'markup.keyword.sphinx'
       }
       {
         'captures':
@@ -203,27 +193,6 @@
         'comment': 'directives with arguments'
         'match': '(\\.\\.)\\s([A-z][-A-z0-9_]+)(::)\\s+(.+?)\\s*$'
         'name': 'meta.other.directive.sphinx'
-      }
-    ]
-  'emphasis':
-    'patterns': [
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.bold.sphinx'
-          '2':
-            'name': 'punctuation.definition.bold.sphinx'
-        'match': '(\\*\\*)[^\\*\\s][^*]*(\\*\\*)'
-        'name': 'markup.bold.sphinx'
-      }
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.italic.sphinx'
-          '2':
-            'name': 'punctuation.definition.italic.sphinx'
-        'match': '(?<!\\\\)(\\*)[^\\*\\s][^*]*(?<!\\\\)(\\*)'
-        'name': 'markup.italic.sphinx'
       }
     ]
   'footnotes':
