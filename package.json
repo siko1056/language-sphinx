@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Sphinx Language Support",
   "repository": "https://github.com/siko1056/language-sphinx",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
