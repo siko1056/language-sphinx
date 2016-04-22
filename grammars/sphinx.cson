@@ -23,25 +23,46 @@
   'all':
     'patterns': [
       {
-        'include': '#directives'
+        'comment': 'directives'
+        'begin': '\\.\\.\\s[A-z][-A-z0-9_]+::(\\s*$|\\s+(.+?)\\s*$)'
+        'beginCaptures':
+          '1':
+            'name': 'markup.constant.directive.block.sphinx'
+        'end': '^(?=\\S)'
+        'name': 'markup.keyword.directive.block.sphinx'
+        'patterns': [
+          {
+            'match': '.+'
+            'name': 'markup.raw.directive.block.sphinx'
+          }
+        ]
       }
       {
-        'include': '#raw-blocks'
+        'comment': 'Literal Blocks'
+        'begin': '(::)$'
+        'name': 'markup.keyword.literal.block.sphinx'
+        'end': '^(?=\\S)'
+        'patterns': [
+          {
+            'match': '.+'
+            'name': 'markup.raw.literal.block.sphinx'
+          }
+        ]
       }
       {
         'begin': '(?<=\\s)\\*\\*(?!\\s)'
-        'end': '(?<!\\s)\\*\\*(?=\\s)'
+        'end': '(?<!\\s)\\*\\*(?!\\w)'
         'name': 'markup.bold.sphinx'
       }
       {
         'begin': '(?<=\\s)\\*(?!\\s)'
-        'end': '(?<!\\s)\\*(?=\\s)'
+        'end': '(?<!\\s)\\*(?!\\w)'
         'name': 'markup.italic.sphinx'
       }
       {
         'begin': '(?<=\\s)``(?!\\s)'
-        'end': '(?<!\\s)``(?=\\s)'
-        'name': 'markup.raw.sphinx'
+        'end': '(?<!\\s)``(?!\\w)'
+        'name': 'markup.raw.literal.inline.sphinx'
       }
       {
         'include': '#link-def'
@@ -114,10 +135,14 @@
         'include': '#tables'
       }
       {
-        'include': '#headings'
+        'begin': '(^(=|-|~|`|#|"|\\^|\\+|\\*|\\:|\\.|\'|_){3,}$){1,1}?'
+        'end': '^\\s*$'
+        'name': 'punctuation.definition.heading.sphinx'
       }
       {
-        'include': '#comments'
+        'begin': '^\\.\\. '
+        'end': '^[\\s]*$\\n?'
+        'name': 'comment.sphinx'
       }
     ]
   'citations':
@@ -153,46 +178,6 @@
         'comment': 'citation reference'
         'match': '((\\[)[A-z][A-z0-9_-]*(\\]))(_)'
         'name': 'meta.link.citation.sphinx'
-      }
-    ]
-  'comments':
-    'patterns': [
-      {
-        'begin': '^(\\.\\.)[ ]'
-        'beginCaptures':
-          '1':
-            'name': 'punctuation.definition.comment.sphinx'
-        'end': '^[\\s]*$\\n?'
-        'name': 'comment.line.double-dot.sphinx'
-      }
-    ]
-  'directives':
-    'patterns': [
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.directive.sphinx'
-          '2':
-            'name': 'support.directive.sphinx'
-          '3':
-            'name': 'punctuation.separator.key-value.sphinx'
-        'comment': 'directives'
-        'match': '(\\.\\.)\\s([A-z][-A-z0-9_]+)(::)\\s*$'
-        'name': 'meta.other.directive.sphinx'
-      }
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.directive.sphinx'
-          '2':
-            'name': 'support.directive.sphinx'
-          '3':
-            'name': 'punctuation.separator.key-value.sphinx'
-          '4':
-            'name': 'entity.name.directive.sphinx'
-        'comment': 'directives with arguments'
-        'match': '(\\.\\.)\\s([A-z][-A-z0-9_]+)(::)\\s+(.+?)\\s*$'
-        'name': 'meta.other.directive.sphinx'
       }
     ]
   'footnotes':
@@ -258,16 +243,6 @@
         'name': 'meta.link.footnote.symbol.auto.sphinx'
       }
     ]
-  'headings':
-    'patterns': [
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.heading.sphinx'
-        'match': '(^(=|-|~|`|#|"|\\^|\\+|\\*|\\:|\\.|\'|_){3,}$){1,1}?'
-        'name': 'markup.heading.sphinx'
-      }
-    ]
   'link-def':
     'patterns': [
       {
@@ -330,30 +305,6 @@
             'name': 'string.other.link.title.sphinx'
           }
         ]
-      }
-    ]
-  'raw-blocks':
-    'patterns': [
-      {
-        'begin': '(::)$'
-        'beginCaptures':
-          '1':
-            'name': 'punctuation.section.raw.sphinx'
-        'comment': 'Literal Blocks'
-        'contentName': 'meta.raw.block.sphinx'
-        'end': '^(?=\\S)'
-        'patterns': [
-          {
-            'include': '#raw-blocks-inner'
-          }
-        ]
-      }
-    ]
-  'raw-blocks-inner':
-    'patterns': [
-      {
-        'match': '.+'
-        'name': 'markup.raw.inner.sphinx'
       }
     ]
   'tables':
