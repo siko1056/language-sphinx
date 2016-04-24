@@ -2,7 +2,7 @@
   "name": "language-sphinx",
   "version": "0.1.4",
   "description": "Sphinx Language Support",
-  "repository": "https://github.com/siko1056/language-sphinx/",
+  "repository": "https://github.com/siko1056/language-sphinx",
   "license": "GPL-3.0",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
