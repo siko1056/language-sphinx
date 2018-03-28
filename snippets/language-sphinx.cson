@@ -14,3 +14,15 @@
   'section 3':
     'prefix': 'sss'
     'body': '${1:subsection name}\n----------------$0\n'
+  'figure':
+    'prefix': 'figure'
+    'body': '.. figure:: ${1:path}\n$0'
+  'guilabel':
+    'prefix': 'guilabel'
+    'body': ':guilabel:`${1:label}`$0'
+  'menuselection':
+    'prefix': 'menuselection'
+    'body': ':menuselection:`${1:menu} --> ${2:item}`$0'
+  'note':
+    'prefix': 'note'
+    'body': '.. note::\n\n   ${1:note text}\n$0'
