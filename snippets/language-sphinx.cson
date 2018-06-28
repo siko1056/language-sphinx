@@ -1,4 +1,5 @@
 '.text.sphinx, .source.gfm.sphinx':
+
   'image':
     'prefix': 'image'
     'body': '.. image:: ${1:path}\n$0'
@@ -38,9 +39,8 @@
 
          ${2:Caption text}
     """
-    'description': 'An image with a caption.'
+    'description': 'An image with a caption, with additional advanced options.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
-
 
   'external link':
     'prefix': 'link'
@@ -117,5 +117,5 @@
   'internal reference':
     'prefix': 'ref'
     'body': ':ref:\\`${1:Link title} <${2:label-name}>\\`$0'
-    'description': 'A link to a label within the document.'
+    'description': 'An inline link to a label within the document.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#cross-referencing-arbitrary-locations'
