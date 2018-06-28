@@ -5,6 +5,43 @@
     'description': 'Inserts image found at the path specified.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#images'
 
+  'advanced image':
+    'prefix': 'advimage'
+    'body': """
+      .. image:: ${1:path}
+         :width: ${2:200px}
+         :height: ${3:100px}
+         :align: ${4:center}
+         :alt: {5:alternate text}
+    """
+    'description': 'Inserts image, with additional advanced options.'
+    'descriptionMoreURL': 'http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html#image-directive'
+
+  'figure':
+    'prefix': 'figure'
+    'body': """
+      .. figure:: ${1:path}
+
+         ${2:Caption text}
+    """
+    'description': 'An image with a caption.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
+
+  'advanced figure':
+    'prefix': 'advfigure'
+    'body': """
+      .. figure:: ${1:path}
+         :width: ${2:200px}
+         :height: ${3:100px}
+         :align: ${4:center}
+         :alt: {5:alternate text}
+
+         ${2:Caption text}
+    """
+    'description': 'An image with a caption.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
+
+
   'external link':
     'prefix': 'link'
     'body': '\\`${1:Title} <${2:http://link}>\\`_$0'
@@ -40,16 +77,6 @@
     'body': '${1:subsubsection title}\n^^^^^^^^^^^^^^^^^^^^^^^^^$0\n'
     'description': 'Adds subsubsection heading.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
-
-  'figure':
-    'prefix': 'figure'
-    'body': """
-      .. figure:: ${1:path}
-
-         ${2:Caption text}
-    """
-    'description': 'An image with a caption.'
-    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
 
   'guilabel':
     'prefix': 'guilabel'
