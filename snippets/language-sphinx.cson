@@ -43,7 +43,14 @@
 
   'figure':
     'prefix': 'figure'
-    'body': '.. figure:: ${1:path}\n$0'
+    'body': """
+      .. figure:: ${1:path}
+
+         ${2:Caption text}
+    """
+    'description': 'An image with a caption.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
+
   'guilabel':
     'prefix': 'guilabel'
     'body': ':guilabel:`${1:label}`$0'
