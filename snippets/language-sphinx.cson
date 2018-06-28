@@ -2,12 +2,14 @@
   'image':
     'prefix': 'image'
     'body': '.. image:: ${1:path}\n$0'
-  'link':
     'description': 'Inserts image found at the path specified.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#images'
 
+  'external link':
     'prefix': 'link'
     'body': '\\`${1:Title} <${2:http://link}>\\`_$0'
+    'description': 'Adds link to URL external to your documentation.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#external-links'
 
   'part':
     'prefix': 'part'
