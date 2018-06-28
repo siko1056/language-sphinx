@@ -54,9 +54,18 @@
   'guilabel':
     'prefix': 'guilabel'
     'body': ':guilabel:`${1:label}`$0'
+    'description': 'Labels presented as part of an interactive user interface should be marked using guilabel.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-guilabel'
+
   'menuselection':
     'prefix': 'menuselection'
     'body': ':menuselection:`${1:menu} --> ${2:item}`$0'
+    'description': 'This is used to mark a complete sequence of menu selections, including selecting submenus and choosing a specific operation, or any subsequence of such a sequence.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-menuselection'
+
   'note':
     'prefix': 'note'
     'body': '.. note::\n\n   ${1:note text}\n$0'
+    'description': 'Notes can be used to emphasise a point that requires more attention.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
+
