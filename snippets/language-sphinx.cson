@@ -69,6 +69,18 @@
     'description': 'Notes can be used to emphasise a point that requires more attention.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
 
+  'warning':
+    'prefix': 'warning'
+    'body': '.. warning::\n\n   ${1:warning text}\n$0'
+    'description': 'Warnings can be used to highlight things that must be done with caution.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
+
+  'seealso':
+    'prefix': 'seealso'
+    'body': '.. seealso::\n\n   ${1:seealso text}\n$0'
+    'description': 'See also can be used to refer to other documents.'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#directives'
+
   'label':
     'prefix': 'label'
     'body': '.. _${1:label-name}:'
