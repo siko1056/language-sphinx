@@ -8,7 +8,7 @@
   'external link':
     'prefix': 'link'
     'body': '\\`${1:Title} <${2:http://link}>\\`_$0'
-    'description': 'Adds link to URL external to your documentation.'
+    'description': 'Adds link to URL external to your document.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#external-links'
 
   'part':
