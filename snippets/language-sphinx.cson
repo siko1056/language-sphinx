@@ -14,31 +14,31 @@
   'part':
     'prefix': 'part'
     'body': '#########################\n${1:Part title}\n#########################\n'
-    'description': 'Adds part section heading'
+    'description': 'Adds part section heading.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
 
   'chapter':
     'prefix': 'chapter'
     'body': '*************************\n${1:Chapter title}\n*************************\n'
-    'description': 'Adds chapter section heading'
+    'description': 'Adds chapter section heading.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
 
   'section 1':
     'prefix': 'level1'
     'body': '${1:section title}\n=========================$0\n'
-    'description': 'Adds section heading'
+    'description': 'Adds section heading.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
 
   'section 2':
     'prefix': 'level2'
     'body': '${1:subsection title}\n-------------------------$0\n'
-    'description': 'Adds subsection heading'
+    'description': 'Adds subsection heading.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
 
   'section 3':
     'prefix': 'level3'
     'body': '${1:subsubsection title}\n^^^^^^^^^^^^^^^^^^^^^^^^^$0\n'
-    'description': 'Adds subsubsection heading'
+    'description': 'Adds subsubsection heading.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
 
   'figure':
