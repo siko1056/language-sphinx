@@ -6,14 +6,23 @@
     'prefix': 'link'
     'body': '\\`${1:Title} <${2:http://link}>\\`_$0'
   'section 1':
-    'prefix': 'sec'
-    'body': '${1:subsection name}\n================$0\n'
+    'prefix': 'level1'
+    'body': '${1:section title}\n=========================$0\n'
+    'description': 'Adds section heading'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
+
   'section 2':
-    'prefix': 'subs'
-    'body': '${1:subsection name}\n****************$0\n'
+    'prefix': 'level2'
+    'body': '${1:subsection title}\n-------------------------$0\n'
+    'description': 'Adds subsection heading'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
+
   'section 3':
-    'prefix': 'sss'
-    'body': '${1:subsection name}\n----------------$0\n'
+    'prefix': 'level3'
+    'body': '${1:subsubsection title}\n^^^^^^^^^^^^^^^^^^^^^^^^^$0\n'
+    'description': 'Adds subsubsection heading'
+    'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections'
+
   'figure':
     'prefix': 'figure'
     'body': '.. figure:: ${1:path}\n$0'
