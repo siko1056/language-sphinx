@@ -13,7 +13,7 @@
          :width: ${2:200px}
          :height: ${3:100px}
          :align: ${4:center}
-         :alt: {5:alternate text}
+         :alt: ${5:alternate text}
     """
     'description': 'Inserts image, with additional advanced options.'
     'descriptionMoreURL': 'http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html#image-directive'
@@ -35,7 +35,7 @@
          :width: ${2:200px}
          :height: ${3:100px}
          :align: ${4:center}
-         :alt: {5:alternate text}
+         :alt: ${5:alternate text}
 
          ${2:Caption text}
     """
@@ -118,15 +118,15 @@
     'description': 'Add a block of example code or terminal commands.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-code-block'
 
-  'code block':
-    'prefix': 'codeblock'
+  'literal code block include':
+    'prefix': 'literalinclude'
     'body': """
     .. literalinclude:: ${1:path}
-       :lines: ${2:1,3,5-10,20-}
+       :language: ${2:language}
+       :lines: ${3:1,3,5-10,20-}
     """
     'description': 'Add a block of text from a file, scoped to specific lines.'
     'descriptionMoreURL': 'http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-literalinclude'
-
 
   'label':
     'prefix': 'label'
