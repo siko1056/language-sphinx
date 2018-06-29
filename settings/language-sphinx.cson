@@ -1,4 +1,4 @@
-'.text.sphinx, .source.gfm.sphinx':
+'.text.sphinx':
   'editor':
     'commentStart': '.. '
     'increaseIndentPattern': '::\\s*$'
