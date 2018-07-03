@@ -18,7 +18,7 @@ repository:
   all:
     patterns: [
       {
-        comment: 'directives'
+        comment: 'Directives'
         begin: '\\.\\.\\s[A-z][-A-z0-9_]+::(\\s*$|\\s+(.+?)\\s*$)'
         beginCaptures:
           1: name: 'markup.constant.directive.block.sphinx'
@@ -58,42 +58,46 @@ repository:
         end: '``((?=[^`\\w\\d])|$)'
         name: 'markup.raw.literal.inline.sphinx'
       }
+      { include: '#link-targets' }
       {
-        include: '#link-def'
+        comment: 'Substitutions: |name|'
+        captures:
+          1: name: 'punctuation.substitution.sphinx'
+          2: name: 'markup.keyword.sphinx'
+          3: name: 'punctuation.substitution.sphinx'
+        match: '(?<!\\\\)(\\|)([^|]+)(?<!\\\\)(\\|_{0,2})'
+        name: 'meta.link.substitution.sphinx'
       }
       {
-        captures:
-          1: name: 'punctuation.definition.substitution.sphinx'
-        match: '(?<!\\\\)(\\|)[^|]+(?<!\\\\)(\\|_{0,2})'
-        name: 'markup.underline.substitution.sphinx'
+        comment: 'Intepreted text: `Title Reference`'
+        match: '`[^`]+`(?![_`])'
+        name: 'markup.keyword.sphinx'
       }
       {
+        comment: 'Anonymous target: __ https://www.python.org'
         captures:
-          1: name: 'punctuation.definition.intepreted.sphinx'
-          2: name: 'punctuation.definition.intepreted.sphinx'
-        comment: 'intepreted text - single line'
-        match: '(`)[^`]+(`)(?!_)'
-        name: 'markup.other.command.sphinx'
-      }
-      {
-        captures:
-          1: name: 'punctuation.definition.link.sphinx'
+          1: name: 'punctuation.link.sphinx'
           2: name: 'markup.underline.link.sphinx'
-        comment: 'anonymous links __ url'
-        match: '\\s*(__)\\s+(.+)'
+        match: '^\\s*(__)\\s+(.+)'
         name: 'meta.link.sphinx'
       }
       {
-        include: '#link-reference'
-      }
-      {
-        'comment', 'Inline markup'
+        comment: 'Inline markup'
         begin: ':[-A-z0-9_.]*:`'
         end:   '(?<!\\\\)`'
         contentName: 'string.sphinx'
         name: 'markup.keyword.sphinx'
       }
       {
+        comment: 'Inline internal link: Label_'
+        captures:
+          1: name: 'string.other.link.title.sphinx'
+          2: name: 'punctuation.definition.link.sphinx'
+        match: '\\b([-.:+_\\d\\w]+)(_)\\b'
+        name: 'meta.link.reference'
+      }
+      {
+        comment: 'Inline external web link: `Link text <https://domain.invalid/>`_'
         captures:
           1: name: 'punctuation.definition.link.sphinx'
           2: name: 'string.other.link.title.sphinx'
@@ -101,9 +105,17 @@ repository:
           4: name: 'markup.underline.link.sphinx'
           5: name: 'punctuation.definition.location.sphinx'
           6: name: 'punctuation.definition.link.sphinx'
-        comment: 'links `...`_ '
         match: '(`)([^<`]+)\\s+(<)(.*?)(>)(`_)'
         name: 'meta.link.inline.sphinx'
+      }
+      {
+        comment: 'Inline internal link: `My Label`_'
+        captures:
+          1: name: 'punctuation.definition.link.sphinx'
+          2: name: 'string.other.link.title.sphinx'
+          3: name: 'punctuation.definition.link.sphinx'
+        match: '(`)([^`]+)(`_{1,2})'
+        name: 'meta.link.reference'
       }
       { include: '#footnotes' }
       { include: '#citations' }
@@ -123,6 +135,7 @@ repository:
   citations:
     patterns: [
       {
+        comment: 'Citation target: .. [ref]'
         captures:
           1: name: 'punctuation.definition.link.sphinx'
           2: name: 'constant.other.citation.link.sphinx'
@@ -130,17 +143,16 @@ repository:
           4: name: 'punctuation.definition.constant.sphinx'
           5: name: 'punctuation.definition.constant.sphinx'
           6: name: 'string.other.citation.sphinx'
-        comment: 'replacement'
         match: '^(\\.\\.)\\s+((\\[)[A-z][A-z0-9]*(\\]))(_)\\s+(.*)'
         name: 'meta.link.citation.def.sphinx'
       }
       {
+        comment: 'Citation reference: [ref]_'
         captures:
           1: name: 'constant.other.citation.link.sphinx'
           2: name: 'punctuation.definition.constant.sphinx'
           3: name: 'punctuation.definition.constant.sphinx'
           4: name: 'punctuation.definition.constant.sphinx'
-        comment: 'citation reference'
         match: '((\\[)[A-z][A-z0-9_-]*(\\]))(_)'
         name: 'meta.link.citation.sphinx'
       }
@@ -148,6 +160,7 @@ repository:
   footnotes:
     patterns: [
       {
+        comment: 'Footnote target: .. [#f1] Text of the first footnote.'
         captures:
           1: name: 'punctuation.definition.link.sphinx'
           2: name: 'constant.other.footnote.link.sphinx'
@@ -160,84 +173,59 @@ repository:
         name: 'meta.link.footnote.def.sphinx'
       }
       {
+        comment: 'Footnote reference: [0]_'
         captures:
           1: name: 'constant.other.footnote.link'
           2: name: 'punctuation.definition.constant.sphinx'
           3: name: 'punctuation.definition.constant.sphinx'
           4: name: 'punctuation.definition.constant.sphinx'
-        comment: 'footnote reference: [0]_'
         match: '((\\[)[0-9]+(\\]))(_)'
         name: 'meta.link.footnote.numeric.sphinx'
       }
       {
+        comment: 'Footnote reference: [#]_ or [#foo]_'
         captures:
           1: name: 'constant.other.footnote.link'
           2: name: 'punctuation.definition.constant.sphinx'
           3: name: 'punctuation.definition.constant.sphinx'
           4: name: 'punctuation.definition.constant.sphinx'
-        comment: 'footnote reference [#]_ or [#foo]_'
         match: '((\\[#)[A-z0-9_]*(\\]))(_)'
         name: 'meta.link.footnote.auto.sphinx'
       }
       {
+        comment: 'Footnote reference: [*]_'
         captures:
           1: name: 'constant.other.footnote.link.sphinx'
           2: name: 'punctuation.definition.constant.sphinx'
           3: name: 'punctuation.definition.constant.sphinx'
           4: name: 'punctuation.definition.constant.sphinx'
-        comment: 'footnote reference [*]_'
         match: '((\\[)\\*(\\]))(_)'
         name: 'meta.link.footnote.symbol.auto.sphinx'
       }
     ]
-  'link-def':
+  'link-targets':
     patterns: [
       {
+        comment: 'Link: .. _hyperlink/with a slash: http://example.com'
         captures:
           1: name: 'punctuation.definition.link.sphinx'
           2: name: 'punctuation.definition.string.sphinx'
           3: name: 'string.other.link.title.sphinx'
           4: name: 'punctuation.separator.key-value.sphinx'
           5: name: 'markup.underline.link.sphinx'
-        comment: 'replacement'
         match: '(\\.\\.)\\s+(_)([-.\\d\\w\\s()/]+)(:)\\s+(.*)'
         name: 'meta.link.reference.def.sphinx'
       }
       {
+        comment: 'Link: .. _`hyperlink with backtick a slash`: http://example.com'
         captures:
           1: name: 'punctuation.definition.link.sphinx'
           2: name: 'punctuation.definition.string.sphinx'
           3: name: 'string.other.link.title.sphinx'
           4: name: 'punctuation.separator.key-value.sphinx'
           5: name: 'markup.underline.link.sphinx'
-        comment: 'replacement'
         match: '(\\.\\.)\\s+(_`)([^`]+)(`:)\\s+(.*)'
         name: 'meta.link.reference.def.sphinx'
-      }
-    ]
-  'link-reference':
-    patterns: [
-      {
-        captures:
-          1: name: 'string.other.link.title.sphinx'
-          2: name: 'punctuation.definition.link.sphinx'
-        match: '\\b([-.:+_\\d\\w]+)(_)\\b'
-        name: 'meta.link.reference'
-      }
-      {
-        begin: '(`)'
-        beginCaptures:
-          1: name: 'punctuation.definition.link.sphinx'
-        end: '(`_)'
-        endCaptures:
-          1: name: 'punctuation.definition.link.sphinx'
-        name: 'meta.link.reference'
-        patterns: [
-          {
-            match: '[^`]+'
-            name: 'string.other.link.title.sphinx'
-          }
-        ]
       }
     ]
   tables:
